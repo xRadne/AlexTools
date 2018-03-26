@@ -11,7 +11,7 @@ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 == Information
 Author:: Alexander Radne 
-Name:: AlexTool
+Name:: ToolOne
 Version:: 1.0.0
 SU Version:: 2018
 Date:: 2018-03-26
@@ -22,17 +22,23 @@ module XRADNE_Extensions
 
 	module XRADNE_Tool
 
-		class FaceSplit
+		class ToolOne
 
 			def initialize()
-				point1 = [0,0,0]
-                point2 = [100,100,100]
-                model = Sketchup.active_model
+				model = Sketchup.active_model
                 entities = model.active_entities
-                entities.add_edges(point1, point2)
+                selection = model.selection
+                edges = selection.grep(Sketchup::Edge)
+
+				point1 = [0,0,0]
+                point2 = edges[0].end
+				entities.add_edges(point1, point2)
+				
+
+				Sketchup.send_action('selectSelectionTool:')
 			end #initialize
 
-		end #FaceSplit
+		end #ToolOne
 
 	end #XRADNE_Tool
 
