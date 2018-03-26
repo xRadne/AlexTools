@@ -25,54 +25,17 @@ module ALEX_Extensions
 		class FaceSplit
 
 			def initialize()
-				csplit()
-				
-				Sketchup.send_action('selectSelectionTool:')
-			end
-
-			def csplit()
-                #
+				point1 = [0,0,0]
+                point2 = [100,100,100]
                 model = Sketchup.active_model
-                ents = model.active_entities
-                sel = model.selection
-                faces = sel.grep(Sketchup::Face)
-                #
-                model.start_operation('csplit')
-                #
-                faces.each do |face|
-                    #
-                    sum = Geom::Point3d.new(0,0,0)
-                    #
-                    verts = face.vertices
-                    n = verts.size.to_f
-                    # use API Geom::Point3d.+ instance method:
-                    verts.each {|v| sum += ORIGIN.vector_to(v.position) }
-                    #
-                    avg = Geom::Point3d.new( sum.x/n, sum.y/n, sum.z/n )
-                    #
-                    verts.each {|v| ents.add_line( avg, v ) }
-                    #
-                end # each face
-                #
-                model.commit_operation
-                #
-                rescue => e
-                #
-                puts "Error <#{e.class.name}: #{e.message} >"
-                puts e.backtrace if $VERBOSE
-                #
-                model.abort_operation
-                #
-                else # when no errors:
-                #
-                sel.clear
-                #
-			end # csplit()
+                entities = model.active_entities
+                entities.add_edges(point1, point2)
+			end #initialize
 
-		end #class
+		end #FaceSplit
 
-	end #module
+	end #ALEX_Tool
 
-end #module
+end #ALEX_Extensions
 
 file_loaded( File.basename(__FILE__) )

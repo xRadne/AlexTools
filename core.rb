@@ -22,7 +22,7 @@ module ALEX_Extensions
 
 	module ALEX_Tool
 		require 'sketchup.rb'
-		require 'AlexTools/loader.rb'
+		require 'xRadneTools/loader.rb'
 	end
 
 	if !file_loaded?('rnd_menu_loader')
@@ -38,12 +38,12 @@ module ALEX_Extensions
 	#------------------------------------------------
 	if !file_loaded?(__FILE__) then
 		@@alex_tools_menu.add_item('FaceSplit'){
-		    Sketchup.active_model.select_tool RND_Extensions::RND_FaceSplit::FaceSplit.new
+		    Sketchup.active_model.select_tool ALEX_Extensions::ALEX_Tool::FaceSplit.new
 		}
 		# Add toolbar
 		alextools_tb = UI::Toolbar.new "FaceSplit"
 		alextools_cmd = UI::Command.new("FaceSplit"){
-		    Sketchup.active_model.select_tool RND_Extensions::RND_FaceSplit::FaceSplit.new
+		    Sketchup.active_model.select_tool ALEX_Extensions::ALEX_Tool::FaceSplit.new
 		}
 		alextools_cmd.small_icon = "img/x_small.png"
 		alextools_cmd.large_icon = "img/x_large.png"
