@@ -47,9 +47,9 @@ module XRADNE_Extensions
 		}
 		alextools_cmd.small_icon = "img/x_small.png"
 		alextools_cmd.large_icon = "img/x_large.png"
-		alextools_cmd.tooltip = "AlexTool"
+		alextools_cmd.tooltip = "ToolOne"
 		alextools_cmd.status_bar_text = "Splits up faces"
-		alextools_cmd.menu_text = "AlexTool"
+		alextools_cmd.menu_text = "ToolOne"
 		alextools_tb = alextools_tb.add_item alextools_cmd
 		alextools_tb.show
 	end
