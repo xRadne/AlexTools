@@ -18,9 +18,9 @@ Date:: 2018-03-26
 Description:: Split faces up into triangles.
 =end
 
-module ALEX_Extensions
+module XRADNE_Extensions
 
-	module ALEX_Tool
+	module XRADNE_Tool
 
 		class FaceSplit
 
@@ -34,8 +34,8 @@ module ALEX_Extensions
 
 		end #FaceSplit
 
-	end #ALEX_Tool
+	end #XRADNE_Tool
 
-end #ALEX_Extensions
+end #XRADNE_Extensions
 
 file_loaded( File.basename(__FILE__) )
