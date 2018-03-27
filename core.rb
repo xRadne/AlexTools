@@ -25,36 +25,36 @@ module XRADNE_Extensions
 		require 'xRadneTools/loader.rb'
 	end
 
-	if !file_loaded?('rnd_menu_loader')
-		@@alex_tools_menu = UI.menu("Plugins").add_submenu("xRadne Tools")
+	if !file_loaded?('xradne_menu_loader')
+		@@xradne_tools_menu = UI.menu("Plugins").add_submenu("xRadne Tools")
 	end
 
 	#------New menu Items---------------------------
-	if !file_loaded?('rnd_ew_loader')
-		@@rnd_ew_menu = @@alex_tools_menu.add_submenu("Websites")
-		@@rnd_ew_menu.add_item("xRadne @ GitHub"){UI.openURL('http://https://github.com/xRadne')}
-		@@alex_tools_menu.add_separator
+	if !file_loaded?('xradne_web_loader')
+		@@xradne_web_menu = @@xradne_tools_menu.add_submenu("Websites")
+		@@xradne_web_menu.add_item("xRadne @ GitHub"){UI.openURL('http://https://github.com/xRadne')}
+		@@xradne_tools_menu.add_separator
 	end
 	#------------------------------------------------
 	if !file_loaded?(__FILE__) then
-		@@alex_tools_menu.add_item('ToolOne'){
+		@@xradne_tools_menu.add_item('ToolOne'){
 		    Sketchup.active_model.select_tool XRADNE_Extensions::XRADNE_Tool::ToolOne.new
 		}
 		# Add toolbar
-		alextools_tb = UI::Toolbar.new "ToolOne"
-		alextools_cmd = UI::Command.new("ToolOne"){
+		xradnetools_tb = UI::Toolbar.new "xRadne Tools"
+		xradnetools_cmd = UI::Command.new("ToolOne"){
 		    Sketchup.active_model.select_tool XRADNE_Extensions::XRADNE_Tool::ToolOne.new
 		}
-		alextools_cmd.small_icon = "img/x_small.png"
-		alextools_cmd.large_icon = "img/x_large.png"
-		alextools_cmd.tooltip = "ToolOne"
-		alextools_cmd.status_bar_text = "Splits up faces"
-		alextools_cmd.menu_text = "ToolOne"
-		alextools_tb = alextools_tb.add_item alextools_cmd
-		alextools_tb.show
+		xradnetools_cmd.small_icon = "img/x_small.png"
+		xradnetools_cmd.large_icon = "img/x_large.png"
+		xradnetools_cmd.tooltip = "ToolOne"
+		xradnetools_cmd.status_bar_text = "Splits up faces"
+		xradnetools_cmd.menu_text = "ToolOne"
+		xradnetools_tb = xradnetools_tb.add_item xradnetools_cmd
+		xradnetools_tb.show
 	end
 
-	file_loaded('rnd_ew_loader')
-	file_loaded('rnd_menu_loader')
+	file_loaded('xradne_web_loader')
+	file_loaded('xradne_menu_loader')
 	file_loaded(__FILE__)
 end
